@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Haunted Sylhet - Ghost Map</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+body{margin:0;font-family:sans-serif;background:#0a0a0a;color:white}
+header{padding:16px;text-align:center;background:#1a0000}
+header h1{margin:0;font-size:22px}
+header p{margin:5px 0 0;color:#ccc;font-size:14px}
+#map{height:70vh;width:100%}
+.list{padding:12px}
+.card{background:#1e1e1e;padding:12px;border-radius:10px;margin-bottom:10px;border-left:4px solid red}
+.card h3{margin:0 0 5px}
+.card p{margin:0;color:#bbb;font-size:14px}
+button{background:red;color:white;border:0;padding:10px 16px;border-radius:20px;font-weight:bold}
+</style>
+</head>
+<body>
+<header>
+<h1>👻 Haunted Sylhet - Ghost Map</h1>
+<p>Tap a red pin to read the ghost story. Made in Sylhet.</p>
+</header>
+<div id="map"></div>
+<div class="list">
+<div class="card"><h3>1. MC College - Old Building</h3><p>Students say at night, footsteps are heard in empty classrooms. Lights turn on by themselves.</p></div>
+<div class="card"><h3>2. Shahjalal University - Hill Area</h3><p>Locals say a shadow walks near the hills after midnight. Many students avoid this road alone.</p></div>
+<div class="card"><h3>3. Keane Bridge - Surma River</h3><p>Fishermen say they hear crying near the bridge at 3 AM. Old people say don't stop on the bridge at night.</p></div>
+<div class="card"><h3>4. Osmani Medical - Old Ward</h3><p>Nurses say a lady in white saree is seen in the corridor. She disappears when you go close.</p></div>
+<div class="card"><h3>5. Malnicherra Tea Estate</h3><p>Workers say at night, someone calls their name from the tea garden, but no one is there.</p></div>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+var map = L.map('map').setView([24.8949, 91.8687], 13);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+var places = [
+["MC College", 24.8985, 91.8710, "Footsteps heard in empty classrooms."],
+["SUST Hill", 24.9170, 91.8310, "Shadow walks near hills after midnight."],
+["Keane Bridge", 24.8860, 91.8670, "Crying heard near bridge at 3 AM."],
+["Osmani Medical", 24.8990, 91.8550, "Lady in white saree seen in corridor."],
+["Malnicherra Tea", 24.9190, 91.8820, "Someone calls your name from tea garden."]
+];
+places.forEach(function(p){
+L.marker([p[1],p[2]]).addTo(map).bindPopup("<b>"+p[0]+"</b><br>"+p[3]);
+});
+</script>
+</body>
+</html>
